@@ -16,6 +16,7 @@ const BASE_URL = 'https://sofia-backend-9l77.onrender.com';
 function App() {
   const [posts, setPosts] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,6 +47,8 @@ function App() {
     navigate('/blog');
   };
 
+  const isHome = window.location.pathname === '/';
+
   return (
     <div className="app-container">
       <header className="custom-header">
@@ -54,12 +57,19 @@ function App() {
             <h1 className="title">Out of Reach</h1>
           </Link>
         </div>
-        <div className="nav-right">
-          <Link to="/" className="nav-button">Home</Link>
-          <Link to="/blog" className="nav-button">Blog</Link>
-          <Link to="/about" className="nav-button">About</Link>
-          <Link to="/contact" className="nav-button">Contact</Link>
+
+        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          <div className="bar" />
+          <div className="bar" />
+          <div className="bar" />
         </div>
+
+        <nav className={`nav-right ${menuOpen ? 'open' : ''}`}>
+          <Link to="/" className="nav-button" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link to="/blog" className="nav-button" onClick={() => setMenuOpen(false)}>Blog</Link>
+          <Link to="/about" className="nav-button" onClick={() => setMenuOpen(false)}>About</Link>
+          <Link to="/contact" className="nav-button" onClick={() => setMenuOpen(false)}>Contact</Link>
+        </nav>
       </header>
 
       <Routes>
@@ -135,7 +145,7 @@ function App() {
         <Route path="/post/:id" element={<PostPage posts={posts} />} />
       </Routes>
 
-      {!isAdmin && window.location.pathname === '/' && <FloatingNewsletter />}
+      {!isAdmin && isHome && <FloatingNewsletter />}
 
       {isAdmin && (
         <Link to="/upload">
