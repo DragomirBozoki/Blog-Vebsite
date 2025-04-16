@@ -8,7 +8,6 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import './App.css';
 import 'react-quill/dist/quill.snow.css';
-// import LoadingSpinner from './components/LoadingSpinner';
 import FloatingNewsletter from './components/FloatingNewsletter';
 
 const BASE_URL = 'https://sofia-backend-9l77.onrender.com';
@@ -58,11 +57,9 @@ function App() {
           </Link>
         </div>
 
-        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-          <div className="bar" />
-          <div className="bar" />
-          <div className="bar" />
-        </div>
+        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </button>
 
         <nav className={`nav-right ${menuOpen ? 'open' : ''}`}>
           <Link to="/" className="nav-button" onClick={() => setMenuOpen(false)}>Home</Link>
