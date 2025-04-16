@@ -8,7 +8,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import './App.css';
 import 'react-quill/dist/quill.snow.css';
-import LoadingSpinner from './components/LoadingSpinner';
+// import LoadingSpinner from './components/LoadingSpinner';
 import FloatingNewsletter from './components/FloatingNewsletter';
 
 const BASE_URL = 'https://sofia-backend-9l77.onrender.com';
