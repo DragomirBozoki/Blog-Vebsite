@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+/* Fade-in animation for entire page */
+body {
+  opacity: 0;
+  animation: fadeInBody 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeInBody {
+  to {
+    opacity: 1;
+  }
+}
+.language-selector {
+  background-color: #1f1f1f;
+  color: #f1f1f1;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.language-selector:hover {
+  background-color: #2a2a2a;
+  border-color: #666;
+}
