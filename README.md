@@ -52,7 +52,7 @@ For collaborations or product inquiries, reach out to us at:
 📧 mindloopai@gmail.com
 s
 ---
-👨‍💻 Team
+## 👨‍💻 Team
 
 Made with ❤️ by the MindLoop AI startup team – empowering businesses with intelligent assistants.
 
