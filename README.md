@@ -46,6 +46,8 @@ npm install
 # Run locally
 npm start
 
+```
+
 For collaborations or product inquiries, reach out to us at:
 
 👨‍💻 Team
