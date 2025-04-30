@@ -27,7 +27,7 @@ i18n
             smartDesc: "Naš AI razume korisnička pitanja i zna kada i šta da objavi bez vaše intervencije.",
             easyDesc: "Jednostavno povežite VK, Telegram i integrišite Chatbot na vaš sajt — bez komplikacija.",
           },
-          featuresTitle: "Prednosti AI asistenta i CopyBota",
+          featuresTitle: "Prednosti AI asistenta",
           features: [
             "Instant odgovori na najčešća pitanja",
             "Automatsko kopiranje i objavljivanje sadržaja",
@@ -69,7 +69,7 @@ i18n
             smartDesc: "Our AI understands user questions and knows what and when to post without your input.",
             easyDesc: "Easily connect VK, Telegram, and integrate the Chatbot into your website — no hassle.",
           },
-          featuresTitle: "Benefits of AI Assistant and CopyBot",
+          featuresTitle: "Benefits of AI Assistant",
           features: [
             "Instant answers to frequent questions",
             "Automatic content reposting",
@@ -111,7 +111,7 @@ i18n
             smartDesc: "Notre IA comprend les questions et sait quoi et quand publier sans votre intervention.",
             easyDesc: "Connectez facilement VK, Telegram et intégrez le Chatbot sur votre site — sans difficulté.",
           },
-          featuresTitle: "Avantages de l'Assistant IA et CopyBot",
+          featuresTitle: "Avantages de l'Assistant IA",
           features: [
             "Réponses instantanées aux questions fréquentes",
             "Republication automatique de contenu",
@@ -153,7 +153,7 @@ i18n
             smartDesc: "Наш ИИ понимает вопросы пользователей и знает, что и когда публиковать без вашего участия.",
             easyDesc: "Легко подключите VK, Telegram и интегрируйте Чатбот на ваш сайт — без сложностей.",
           },
-          featuresTitle: "Преимущества AI-ассистента и CopyBot",
+          featuresTitle: "Преимущества AI-ассистента",
           features: [
             "Мгновенные ответы на частые вопросы",
             "Автоматическая публикация контента",

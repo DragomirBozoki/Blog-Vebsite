@@ -3,9 +3,14 @@ import { useTranslation } from "react-i18next";
 import LandingChatbot from "../components/LandingChatbot";
 import { Zap, BrainCircuit, Wrench } from "lucide-react";
 
+
 const Landing = () => {
   const { t, i18n } = useTranslation();
   const [animate, setAnimate] = useState(false);
+  const [siteType, setSiteType] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+
 
   useEffect(() => {
     setAnimate(false);
@@ -16,47 +21,85 @@ const Landing = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white px-6 pt-20 pb-16 flex flex-col items-center font-sans">
       
-      {/* NAVBAR */}
-      <div className="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-lg border-b border-white/10 z-50 px-6 py-3 flex justify-between items-center">
-        <div className="text-white font-bold text-lg">MindLoop AI Co.</div>
-        <select
-          className="bg-gray-800 border border-white/20 px-2 py-1 rounded text-white text-sm"
-          defaultValue={i18n.language}
-          onChange={(e) => {
-            i18n.changeLanguage(e.target.value);
-            setAnimate(false);
+    {/* NAVBAR */}
+    <div className="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-lg border-b border-white/10 z-50 px-6 py-3 flex justify-between items-center">
+      <div
+        className="text-white font-bold text-lg cursor-pointer"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        MindLoop AI Co.
+      </div>
+      <select
+        className="bg-gray-800 border border-white/20 px-2 py-1 rounded text-white text-sm"
+        defaultValue={i18n.language}
+        onChange={(e) => {
+          i18n.changeLanguage(e.target.value);
+          setAnimate(false);
+        }}
+      >
+        <option value="en">🇬🇧 EN</option>
+        <option value="fr">🇫🇷 FR</option>
+        <option value="sr">🇷🇸 SR</option>
+        <option value="ru">🇷🇺 RU</option>
+      </select>
+    </div>
+
+
+     {/* HERO */}
+      <div
+        className={`transform transition-all duration-700 ${
+          animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        } border border-white/10 rounded-2xl p-12 shadow-2xl max-w-3xl text-center mt-10`}
+      >
+        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-cyan-400 mb-6">
+          {t("title")}
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-300 mb-8">
+          {t("subtitle")}
+        </p>
+        <div className="flex justify-center">
+        <button
+          onClick={() => {
+            document.getElementById("get-started-section")?.scrollIntoView({ behavior: "smooth" });
           }}
+            className="bg-cyan-500 hover:bg-cyan-600 text-white font-medium px-6 py-3 rounded-full transition duration-300 shadow-lg"
         >
-          <option value="sr">🇷🇸 SR</option>
-          <option value="en">🇬🇧 EN</option>
-          <option value="fr">🇫🇷 FR</option>
-          <option value="ru">🇷🇺 RU</option>
-        </select>
+          {t("getStarted", { defaultValue: "Get Started" })}
+        </button>
+        </div>
       </div>
-
-      {/* HERO */}
-      <div className={`transform transition-all duration-700 ${
-        animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      } bg-white/5 border border-white/10 rounded-2xl p-10 shadow-2xl max-w-2xl text-center mt-4`}>
-        <h1 className="text-4xl font-bold mb-4 text-cyan-400">{t("title")}</h1>
-        <p className="text-lg mb-6 text-gray-300">{t("subtitle")}</p>
-      </div>
-
       {/* Chatbot Simulation */}
       <div className="mt-10 w-full max-w-2xl">
         <LandingChatbot />
       </div>
 
-      {/* BENEFITS */}
-      <div className={`mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full transition-all duration-700 ${
-        animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      }`}>
+     {/* BENEFITS */}
+      <div
+        className={`mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full transition-all duration-700 ${
+          animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}
+      >
         {[
-          { icon: <Zap className="w-8 h-8 text-cyan-400" />, title: t("benefits.instant"), desc: t("benefits.instantDesc") },
-          { icon: <BrainCircuit className="w-8 h-8 text-cyan-400" />, title: t("benefits.smart"), desc: t("benefits.smartDesc") },
-          { icon: <Wrench className="w-8 h-8 text-cyan-400" />, title: t("benefits.easy"), desc: t("benefits.easyDesc") }
+          {
+            icon: <Zap className="w-8 h-8 text-cyan-400" />,
+            title: t("benefits.instant"),
+            desc: t("benefits.instantDesc"),
+          },
+          {
+            icon: <BrainCircuit className="w-8 h-8 text-cyan-400" />,
+            title: t("benefits.smart"),
+            desc: t("benefits.smartDesc"),
+          },
+          {
+            icon: <Wrench className="w-8 h-8 text-cyan-400" />,
+            title: t("benefits.easy"),
+            desc: t("benefits.easyDesc"),
+          },
         ].map((item, i) => (
-          <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center shadow-md">
+          <div
+            key={i}
+            className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+          >
             <div className="mb-3 flex justify-center">{item.icon}</div>
             <h3 className="text-xl font-semibold mb-2 text-white">{item.title}</h3>
             <p className="text-gray-400 text-sm">{item.desc}</p>
@@ -64,9 +107,10 @@ const Landing = () => {
         ))}
       </div>
 
-      {/* FEATURES AND COPYBOT STORY */}
+
+     {/* FEATURES AND COPYBOT STORY */}
       <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full">
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-md">
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
           <h3 className="text-xl font-bold mb-4 text-cyan-400">{t("featuresTitle")}</h3>
           <ul className="space-y-3 text-white text-sm">
             {t("features", { returnObjects: true }).map((item, i) => (
@@ -77,7 +121,7 @@ const Landing = () => {
           </ul>
         </div>
 
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-md text-white text-sm leading-relaxed">
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-md text-white text-sm leading-relaxed transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
           <h3 className="text-xl font-bold mb-4 text-cyan-400">{t("aiAssistantTitle")}</h3>
           <ul className="space-y-3">
             {t("aiAssistantBullets", { returnObjects: true }).map((bullet, index) => (
@@ -96,10 +140,124 @@ const Landing = () => {
         <p className="text-gray-300 text-lg mb-6">{t("sectors")}</p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-white font-medium text-sm">
           {t("sectorsList", { returnObjects: true }).map((sector, i) => (
-            <div key={i} className="bg-black/10 rounded p-2 border border-white/10">{sector}</div>
+            <div
+              key={i}
+              className="bg-black/10 rounded p-2 border border-white/10 transition-all duration-300 hover:scale-105 hover:bg-white/10"
+            >
+              {sector}
+            </div>
           ))}
         </div>
       </div>
+      {/* GET STARTED SECTION */}
+      <div
+        id="get-started-section"
+        className="mt-24 w-full max-w-2xl bg-white/5 border border-white/10 rounded-2xl p-8 shadow-xl text-white"
+      >
+        <h2 className="text-3xl font-bold mb-6 text-cyan-400 text-center">
+          {t("getStartedTitle", { defaultValue: "Let's bring your idea to life!" })}
+        </h2>
+
+        {formSubmitted && (
+          <div className="mb-4 p-4 bg-emerald-500 text-white rounded-md text-center shadow-lg transition duration-300">
+            ✅ {t("formSuccess", { defaultValue: "Message sent successfully!" })}
+          </div>
+        )}
+
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const email = e.target.email.value;
+            const siteType = e.target.siteType.value;
+            const customType = e.target.customType?.value || "";
+            const message = e.target.message.value;
+            const selectedType = siteType === "other" ? customType : siteType;
+
+            console.log("Form data:", { email, selectedType, message });
+            setFormSubmitted(true);
+            setTimeout(() => setFormSubmitted(false), 4000); // automatski nestane za 4 sekunde
+
+          }}
+          className="space-y-6"
+        >
+          {/* Email */}
+          <div>
+            <label className="block mb-1 text-sm text-gray-300">
+              {t("email", { defaultValue: "Your Email" })}
+            </label>
+            <input
+              name="email"
+              type="email"
+              required
+              className="w-full px-4 py-2 rounded bg-gray-800 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              placeholder="you@example.com"
+            />
+          </div>
+
+          {/* Site type */}
+          <div>
+            <label className="block mb-1 text-sm text-gray-300">
+              {t("siteType", { defaultValue: "Type of Your Website" })}
+            </label>
+            <select
+              name="siteType"
+              required
+              onChange={(e) => setSiteType(e.target.value)}
+              className="w-full px-4 py-2 rounded bg-gray-800 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            >
+              <option value="">{t("select", { defaultValue: "Select..." })}</option>
+              <option value="tourism">{t("tourism", { defaultValue: "Tourism" })}</option>
+              <option value="rentacar">{t("rentacar", { defaultValue: "Rent-a-Car" })}</option>
+              <option value="ecommerce">{t("ecommerce", { defaultValue: "E-commerce" })}</option>
+              <option value="education">{t("education", { defaultValue: "Delivery" })}</option>
+              <option value="other">{t("other", { defaultValue: "Other" })}</option>
+            </select>
+          </div>
+
+          {/* Custom site type if "Other" selected */}
+          {siteType === "other" && (
+            <div>
+              <label className="block mb-1 text-sm text-gray-300">
+                {t("customType", { defaultValue: "Please specify your website type" })}
+              </label>
+              <input
+                name="customType"
+                type="text"
+                required
+                className="w-full px-4 py-2 rounded bg-gray-800 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                placeholder={t("customPlaceholder", { defaultValue: "e.g. Blog, SaaS..." })}
+              />
+            </div>
+          )}
+
+          {/* Message */}
+          <div>
+            <label className="block mb-1 text-sm text-gray-300">
+              {t("message", { defaultValue: "Your Request" })}
+            </label>
+            <textarea
+              name="message"
+              required
+              rows={4}
+              className="w-full px-4 py-2 rounded bg-gray-800 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              placeholder={t("messagePlaceholder", {
+                defaultValue: "Tell us what you're looking for...",
+              })}
+            ></textarea>
+          </div>
+
+          {/* Submit */}
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-full transition duration-300 shadow-lg"
+            >
+              {t("send", { defaultValue: "Send" })}
+            </button>
+          </div>
+        </form>
+      </div>
+
 
       {/* FOOTER */}
       <footer id="kontakt" className="mt-24 text-center text-sm text-gray-500">
