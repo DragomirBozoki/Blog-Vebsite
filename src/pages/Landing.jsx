@@ -2,21 +2,51 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import LandingChatbot from "../components/LandingChatbot";
 import { Zap, BrainCircuit, Wrench } from "lucide-react";
-
+import { useRef} from "react";
+import { Play, Pause } from "lucide-react"; // koristiš već lucide-ikonice
 
 const Landing = () => {
   const { t, i18n } = useTranslation();
   const [animate, setAnimate] = useState(false);
   const [siteType, setSiteType] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const  videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showIcon, setShowIcon] = useState(false);
 
-
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          videoRef.current?.play();
+          setIsPlaying(true);
+        }
+      },
+      { threshold: 0.6 }
+    );
+  
+    if (videoRef.current) observer.observe(videoRef.current);
+  
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     setAnimate(false);
     const timeout = setTimeout(() => setAnimate(true), 200);
     return () => clearTimeout(timeout);
   }, [i18n.language]);
+
+  const togglePlay = () => {
+    const vid = videoRef.current;
+    if (!vid) return;
+    if (vid.paused) {
+      vid.play();
+      setIsPlaying(true);
+    } else {
+      vid.pause();
+      setIsPlaying(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white px-6 pt-20 pb-16 flex flex-col items-center font-sans">
@@ -149,6 +179,42 @@ const Landing = () => {
           ))}
         </div>
       </div>
+
+      <div className="mt-20 w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-10">
+      {/* Video */}
+      <div
+        className="relative w-[280px] sm:w-[300px] rounded-xl overflow-hidden border border-white/10 shadow-xl bg-black/30 cursor-pointer"
+        onClick={togglePlay}
+        onMouseEnter={() => setShowIcon(true)}
+        onMouseLeave={() => setShowIcon(false)}
+      >
+        <video
+          ref={videoRef}
+          className="w-full h-auto"
+          src="/videos/copybot-demo.mp4"
+          muted
+          playsInline
+        />
+        {/* Play/Pause Icon */}
+        {showIcon && (
+          <div className="absolute bottom-2 left-2 bg-black/60 p-2 rounded-full text-white">
+            {isPlaying ? <Pause size={18} /> : <Play size={18} />}
+          </div>
+        )}
+      </div>
+
+      {/* Text */}
+      <div className="text-white max-w-xl">
+        <h2 className="text-2xl font-bold text-cyan-400 mb-2">
+          {t("videoSectionTitle")}
+        </h2>
+        <p className="text-sm text-gray-300 leading-relaxed">
+          {t("videoSectionText")}
+        </p>
+      </div>
+    </div>
+
+
       {/* GET STARTED SECTION */}
       <div
         id="get-started-section"
@@ -172,8 +238,28 @@ const Landing = () => {
             const customType = e.target.customType?.value || "";
             const message = e.target.message.value;
             const selectedType = siteType === "other" ? customType : siteType;
+            
 
-            console.log("Form data:", { email, selectedType, message });
+            // zameni fetch sa pravim backendom
+            
+            fetch("http://localhost:4000/api/contact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, selectedType, message })
+            })
+              .then((res) => {
+                if (res.ok) {
+                  setFormSubmitted(true);
+                  setTimeout(() => setFormSubmitted(false), 4000);
+                } else {
+                  alert("Something went wrong!");
+                }
+              })
+              .catch((err) => {
+                console.error("Error sending form:", err);
+                alert("Failed to send message.");
+              });
+            
             setFormSubmitted(true);
             setTimeout(() => setFormSubmitted(false), 4000); // automatski nestane za 4 sekunde
 
