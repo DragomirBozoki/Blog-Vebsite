@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# MindLoop AI – CopyBot & Chatbot Landing Page 🚀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the official landing page for **CopyBot** and **MindLoop Chatbot**, the flagship AI assistants developed by our team at **MindLoop AI**.
 
-## Available Scripts
+This modern, responsive React-based website is designed to showcase the core features and benefits of our dual-bot system, helping visitors quickly understand how our solutions can enhance their workflow, customer engagement, and content creation.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🧠 What is CopyBot?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+CopyBot is your AI-powered content assistant – trained to generate high-quality marketing copy, emails, product descriptions, and more. Perfect for startups, marketers, and businesses seeking consistent, fast content output.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 💬 What is the MindLoop Chatbot?
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+MindLoop Chatbot is a multilingual AI assistant designed to engage users on your site, answer questions in real time, and guide them toward conversion. It supports natural conversation in **Serbian, English, French, and Russian**.
 
-### `npm run build`
+---
+# Build and run the container
+docker build -t mindloopai-site .
+docker run -p 3000:80 mindloopai-site
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ✨ Key Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- ⚡ Instant responses with contextual understanding
+- 🧠 Smart content generation via CopyBot
+- 🌐 Multilingual support (SR, EN, FR, RU)
+- 🖥️ Fully responsive landing page
+- 🔐 Ready for production deployment (via Docker)
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Quick Start
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+# Clone the repo
+git clone https://github.com/YOUR_USERNAME/mindloopai-copybot-chatbot-landing
+cd mindloopai-copybot-chatbot-landing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Install dependencies
+npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Run locally
+npm start
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+For collaborations or product inquiries, reach out to us at:
+📧 mindloopai@gmail.com
+s
+---
+## 👨‍💻 Team
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Made with ❤️ by the MindLoop AI startup team – empowering businesses with intelligent assistants.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
