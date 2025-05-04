@@ -53,12 +53,15 @@ const Landing = () => {
       
     {/* NAVBAR */}
     <div className="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-lg border-b border-white/10 z-50 px-6 py-3 flex justify-between items-center">
-      <div
-        className="text-white font-bold text-lg cursor-pointer"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      >
-        MindLoop AI Co.
-      </div>
+    <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+      <img
+      src="/mindloop_logo.png"
+      alt="MindLoop AI Logo"
+      className="h-16 cursor-pointer"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    />
+    <span className="text-white text-xl font-semibold">MindLoop AI</span>
+    </div>
       <select
         className="bg-gray-800 border border-white/20 px-2 py-1 rounded text-white text-sm"
         defaultValue={i18n.language}
@@ -75,32 +78,59 @@ const Landing = () => {
     </div>
 
 
-     {/* HERO */}
+      {/* HERO */}
       <div
         className={`transform transition-all duration-700 ${
           animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        } border border-white/10 rounded-2xl p-12 shadow-2xl max-w-3xl text-center mt-10`}
+        } bg-gradient-to-br from-cyan-700/10 to-black/20 backdrop-blur-sm border border-cyan-400/20 rounded-2xl p-12 shadow-2xl max-w-3xl text-center mt-10`}
       >
+        {/* Logo u krugu */}
+        <div className="mb-6">
+          <div className="w-20 h-20 rounded-full bg-white/10 border border-cyan-400 mx-auto flex items-center justify-center shadow-md">
+            <img
+              src="/mindloop_logo_rb.png"
+              alt="MindLoop AI Logo"
+              //className="w-12 h-12 object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Tagline */}
+        <h2 className="text-sm uppercase tracking-widest text-gray-400 mb-2">
+          AI Assistants for Modern Communication
+        </h2>
+
+        {/* Title & Subtitle */}
         <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-cyan-400 mb-6">
           {t("title")}
         </h1>
         <p className="text-xl md:text-2xl text-gray-300 mb-8">
           {t("subtitle")}
         </p>
-        <div className="flex justify-center">
-        <button
-          onClick={() => {
-            document.getElementById("get-started-section")?.scrollIntoView({ behavior: "smooth" });
-          }}
+
+        {/* Buttons */}
+        <div className="flex justify-center gap-4">
+          <button
+            onClick={() =>
+              document.getElementById("get-started-section")?.scrollIntoView({ behavior: "smooth" })
+            }
             className="bg-cyan-500 hover:bg-cyan-600 text-white font-medium px-6 py-3 rounded-full transition duration-300 shadow-lg"
-        >
-          {t("getStarted", { defaultValue: "Get Started" })}
-        </button>
+          >
+            {t("getStarted", { defaultValue: "Get Started" })}
+          </button>
+
         </div>
-      </div>
-      {/* Chatbot Simulation */}
-      <div className="mt-10 w-full max-w-2xl">
-        <LandingChatbot />
+
+        {/* Optional Lottie Animation */}
+        {/* 
+        <div className="mt-8">
+          <Lottie
+            animationData={animationData}
+            loop
+            className="w-64 h-64 mx-auto"
+          />
+        </div> 
+        */}
       </div>
 
      {/* BENEFITS */}
@@ -183,6 +213,7 @@ const Landing = () => {
       <div className="mt-20 w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-10">
       {/* Video */}
       <div
+        id="video-demo-section"
         className="relative w-[280px] sm:w-[300px] rounded-xl overflow-hidden border border-white/10 shadow-xl bg-black/30 cursor-pointer"
         onClick={togglePlay}
         onMouseEnter={() => setShowIcon(true)}

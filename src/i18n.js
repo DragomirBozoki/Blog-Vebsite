@@ -19,6 +19,8 @@ i18n
           tryDemo: "Isprobaj demo odmah",
           free: "besplatno",
           navKontakt: "Kontakt",
+          videoSectionTitle: "Pogledajte CopyBot u akciji",
+          videoSectionText: "Kliknite na video da ga pauzirate ili pokrenete. CopyBot automatski prepoznaje objave, kopira ih i objavljuje tamo gde su vam korisnici – bez potrebe za ručnim radom.",
           benefits: {
             instant: "Brzi odgovori i postovi",
             smart: "Pametno razumevanje i automatizacija",
@@ -61,6 +63,8 @@ i18n
           tryDemo: "Try the demo now",
           free: "free",
           navKontakt: "Contact",
+          videoSectionTitle: "Watch CopyBot in Action",
+          videoSectionText: "Click the video to pause or play. CopyBot detects your posts, copies and publishes them where your users are – no manual work needed.",
           benefits: {
             instant: "Fast replies and posts",
             smart: "Smart understanding and automation",
@@ -103,6 +107,8 @@ i18n
           tryDemo: "Essayez la démo",
           free: "gratuit",
           navKontakt: "Contact",
+          videoSectionTitle: "Regardez CopyBot en action",
+          videoSectionText: "Cliquez sur la vidéo pour lire ou mettre en pause. CopyBot détecte les publications, les copie et les republie automatiquement — sans effort manuel.",
           benefits: {
             instant: "Réponses et publications rapides",
             smart: "Compréhension intelligente et automatisation",
@@ -145,6 +151,8 @@ i18n
           tryDemo: "Попробовать демо",
           free: "бесплатно",
           navKontakt: "Контакт",
+          videoSectionTitle: "Смотрите CopyBot в действии",
+          videoSectionText: "Нажмите на видео, чтобы воспроизвести или поставить на паузу. CopyBot автоматически находит ваши посты, копирует их и публикует — без ручной работы.",
           benefits: {
             instant: "Быстрые ответы и публикации",
             smart: "Умное понимание и автоматизация",
