@@ -14,7 +14,7 @@ i18n
     resources: {
       sr: {
         translation: {
-          title: "MindLoop AI Widget za vaš sajt",
+          title: "MindLoop AI Widget za vaš biznis",
           subtitle: "Automatizujte komunikaciju sa klijentima uz AI asistenta i CopyBot koji rade 24/7.",
           tryDemo: "Isprobaj demo odmah",
           free: "besplatno",
@@ -58,7 +58,7 @@ i18n
       },
       en: {
         translation: {
-          title: "MindLoop AI Widget for Your Website",
+          title: "MindLoop AI Widget for Your Business",
           subtitle: "Automate client communication with an AI Assistant and CopyBot working 24/7.",
           tryDemo: "Try the demo now",
           free: "free",

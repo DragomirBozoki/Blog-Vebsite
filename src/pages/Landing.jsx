@@ -1,16 +1,53 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import LandingChatbot from "../components/LandingChatbot";
-import { Zap, BrainCircuit, Wrench } from "lucide-react";
-import { useRef} from "react";
-import { Play, Pause } from "lucide-react"; // koristiš već lucide-ikonice
+import { Link } from 'react-router-dom';
+import { Zap, BrainCircuit, Wrench, Play, Pause } from "lucide-react";
+
+// Inline Dropdown komponenta
+const DropdownMenu = ({ title, items }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button className="text-white hover:text-cyan-300 font-medium">
+        {title} ▾
+      </button>
+      {open && (
+        <div className="absolute left-0 mt-2 flex flex-col bg-gray-900 border border-white/10 rounded shadow-lg min-w-[180px] z-50">
+          {items.map((item, index) =>
+            item.to ? (
+              <Link
+                key={index}
+                to={item.to}
+                className="px-4 py-2 text-sm text-white hover:bg-gray-700"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <span
+                key={index}
+                className="px-4 py-2 text-sm text-gray-400 cursor-not-allowed"
+              >
+                {item.label}
+              </span>
+            )
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const Landing = () => {
   const { t, i18n } = useTranslation();
   const [animate, setAnimate] = useState(false);
   const [siteType, setSiteType] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const  videoRef = useRef(null);
+  const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showIcon, setShowIcon] = useState(false);
 
@@ -24,9 +61,8 @@ const Landing = () => {
       },
       { threshold: 0.6 }
     );
-  
+
     if (videoRef.current) observer.observe(videoRef.current);
-  
     return () => observer.disconnect();
   }, []);
 
@@ -50,32 +86,59 @@ const Landing = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white px-6 pt-20 pb-16 flex flex-col items-center font-sans">
-      
-    {/* NAVBAR */}
-    <div className="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-lg border-b border-white/10 z-50 px-6 py-3 flex justify-between items-center">
-    <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-      <img
-      src="/mindloop_logo.png"
-      alt="MindLoop AI Logo"
-      className="h-16 cursor-pointer"
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-    />
-    <span className="text-white text-xl font-semibold">MindLoop AI</span>
-    </div>
-      <select
-        className="bg-gray-800 border border-white/20 px-2 py-1 rounded text-white text-sm"
-        defaultValue={i18n.language}
-        onChange={(e) => {
-          i18n.changeLanguage(e.target.value);
-          setAnimate(false);
-        }}
-      >
-        <option value="en">🇬🇧 EN</option>
-        <option value="fr">🇫🇷 FR</option>
-        <option value="sr">🇷🇸 SR</option>
-        <option value="ru">🇷🇺 RU</option>
-      </select>
-    </div>
+      {/* NAVBAR */}
+      <div className="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-lg border-b border-white/10 z-50 px-6 py-3 flex justify-between items-center">
+        <div className="flex items-center gap-10">
+          {/* Logo */}
+          <div
+            className="flex items-center gap-4 cursor-pointer"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <img src="/mindloop_logo.png" alt="MindLoop AI Logo" className="h-16" />
+          </div>
+
+          {/* Dropdown Menus */}
+          <DropdownMenu
+            title="CopyBot"
+            items={[
+              { to: "/VKCopyBot", label: "VK CopyBot" },
+              { to: "/CopyBot", label: "CopyBot Overview" },
+            ]}
+          />
+          <DropdownMenu
+            title="AI Assistants"
+            items={[
+              { to: "/ChatBot", label: "AI ChatBot" },
+              { label: "SaaS Generator (Coming soon)" },
+            ]}
+          />
+          <Link
+            to="/about"
+            className="text-white hover:text-cyan-300 font-medium"
+          >
+            About Us
+          </Link>
+
+        </div>
+
+        {/* Language Selector */}
+        <div>
+          <select
+            className="bg-gray-900 border border-white/20 px-2 py-1 rounded text-white text-sm"
+            defaultValue={i18n.language}
+            onChange={(e) => {
+              i18n.changeLanguage(e.target.value);
+              setAnimate(false);
+            }}
+          >
+            <option value="en">🇬🇧 ENG</option>
+            <option value="fr">🇫🇷 FRA</option>
+            <option value="sr">🇷🇸 SRB</option>
+            <option value="ru">🇷🇺 RUS</option>
+          </select>
+        </div>
+      </div>
+
 
 
       {/* HERO */}
@@ -94,12 +157,6 @@ const Landing = () => {
             />
           </div>
         </div>
-
-        {/* Tagline */}
-        <h2 className="text-sm uppercase tracking-widest text-gray-400 mb-2">
-          AI Assistants for Modern Communication
-        </h2>
-
         {/* Title & Subtitle */}
         <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-cyan-400 mb-6">
           {t("title")}
@@ -118,7 +175,6 @@ const Landing = () => {
           >
             {t("getStarted", { defaultValue: "Get Started" })}
           </button>
-
         </div>
 
         {/* Optional Lottie Animation */}
