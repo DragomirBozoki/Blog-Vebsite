@@ -45,35 +45,46 @@ const About = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white font-sans">
       {/* NAVBAR */}
-      <div className="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-lg border-b border-white/10 z-50 px-6 py-3 flex justify-between items-center">
-        <div className="flex items-center gap-10">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-4 cursor-pointer">
-            <img src="/mindloop_logo_rb.png" alt="MindLoop AI Logo" className="h-16" />
-          </Link>
-
-          {/* Meniji */}
-          <DropdownMenu
-            title="CopyBot"
-            items={[
-              { to: "/VKCopyBot", label: "VK CopyBot" },
-              { to: "/CopyBot", label: "CopyBot Overview" },
-            ]}
-          />
-          <DropdownMenu
-            title="AI Assistants"
-            items={[
-              { to: "/ChatBot", label: "ChatBot" },
-              { label: "SaaS Generator (Coming soon)" },
-            ]}
-          />
-          <Link
-            to="/about"
-            className="text-white hover:text-cyan-300 font-medium"
-          >
-            About Us
-          </Link>
-        </div>
+    <div className="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-lg border-b border-white/10 z-50 px-6 py-3 flex justify-between items-center">
+            <div className="flex items-center gap-10">
+              {/* Logo */}
+              <div
+                className="flex items-center gap-4 cursor-pointer"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              >
+                <img src="/mindloop_logo.png" alt="MindLoop AI Logo" className="h-16" />
+              </div>
+    
+              {/* Dropdown Menus */}
+              <DropdownMenu
+                title="CopyBot"
+                items={[
+                  { to: "/VKCopyBot", label: "VK CopyBot" },
+                  { to: "/CopyBot", label: "CopyBot Overview" },
+                ]}
+              />
+              <DropdownMenu
+                title="AI Assistants"
+                items={[
+                  { to: "/ChatBot", label: "AI ChatBot" },
+                  { label: "SaaS Generator (Coming soon)" },
+                ]}
+              />
+              <Link
+                to = "https://mindloopblog.blogspot.com"
+                className = "text-white hover:text-cyan-300 font-medium"
+              >
+              Blog
+              </Link>
+              
+              <Link
+                to="/about"
+                className="text-white hover:text-cyan-300 font-medium"
+              >
+                About Us
+              </Link>
+    
+            </div>
       </div>
 
       {/* CONTENT */}

@@ -113,6 +113,13 @@ const Landing = () => {
             ]}
           />
           <Link
+            to = "https://mindloopblog.blogspot.com"
+            className = "text-white hover:text-cyan-300 font-medium"
+          >
+          Blog
+          </Link>
+          
+          <Link
             to="/about"
             className="text-white hover:text-cyan-300 font-medium"
           >
@@ -250,21 +257,6 @@ const Landing = () => {
         </div>
       </div>
 
-      {/* FOR WHOM */}
-      <div className="mt-20 max-w-4xl text-center bg-white/5 border border-white/10 rounded-2xl p-8 shadow-md">
-        <h2 className="text-2xl font-bold mb-4 text-cyan-400">{t("forWhom")}</h2>
-        <p className="text-gray-300 text-lg mb-6">{t("sectors")}</p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-white font-medium text-sm">
-          {t("sectorsList", { returnObjects: true }).map((sector, i) => (
-            <div
-              key={i}
-              className="bg-black/10 rounded p-2 border border-white/10 transition-all duration-300 hover:scale-105 hover:bg-white/10"
-            >
-              {sector}
-            </div>
-          ))}
-        </div>
-      </div>
 
       <div className="mt-20 w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-10">
       {/* Video */}
@@ -300,7 +292,22 @@ const Landing = () => {
         </p>
       </div>
     </div>
-
+        
+       {/* FOR WHOM */}
+      <div className="mt-20 max-w-4xl text-center bg-white/5 border border-white/10 rounded-2xl p-8 shadow-md">
+        <h2 className="text-2xl font-bold mb-4 text-cyan-400">{t("forWhom")}</h2>
+        <p className="text-gray-300 text-lg mb-6">{t("sectors")}</p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-white font-medium text-sm">
+          {t("sectorsList", { returnObjects: true }).map((sector, i) => (
+            <div
+              key={i}
+              className="bg-black/10 rounded p-2 border border-white/10 transition-all duration-300 hover:scale-105 hover:bg-white/10"
+            >
+              {sector}
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* GET STARTED SECTION */}
       <div
